@@ -14,11 +14,13 @@ flowchart LR
     PM["ProjectManager"]
     SCM["ScmGateway"]
     MS["Message-Service"]
+    CustS["CustomerService"]
 
     Repo -->|git pull, Branch main| CS
     CS -->|"GET /project-manager/{profile}"| PM
     CS -->|"GET /scm-gateway/{profile}"| SCM
     CS -->|"GET /message-service/{profile}"| MS
+    CS -->|"GET /customer-service/{profile}"| CustS
 ```
 
 ## Namenskonvention
@@ -35,6 +37,7 @@ gelten, z. B. der Name des Notification-Exchange) und `application-{profile}.pro
 | `project-manager-dev.properties` / `-prod.properties` | Nur ProjectManager |
 | `scm-gateway-dev.properties` / `-prod.properties` | Nur ScmGateway |
 | `message-service-dev.properties` / `-prod.properties` | Nur Message-Service |
+| `customer-service-dev.properties` / `-prod.properties` | Nur CustomerService |
 
 `dev` und `prod` entsprechen dem über `SPRING_PROFILES_ACTIVE` aktivierten Profil des
 jeweiligen Dienstes.
