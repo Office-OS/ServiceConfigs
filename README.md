@@ -39,6 +39,16 @@ gelten, z. B. der Name des Notification-Exchange) und `application-{profile}.pro
 `dev` und `prod` entsprechen dem über `SPRING_PROFILES_ACTIVE` aktivierten Profil des
 jeweiligen Dienstes.
 
+## Modul-Verfügbarkeit
+
+`project-manager-dev.properties` und `project-manager-prod.properties` enthalten je den Key
+`modules.installed` (kommagetrennte Liste von Eureka-Service-Ids) – die für ProjectManager (das
+"Hauptmodul") bewusst freigeschalteten optionalen Module. Aktuell in beiden Profilen aktiviert:
+`scm-gateway` und `message-service`. Das ist eine reine Konfigurationsentscheidung ("gehört das
+Modul grundsätzlich zum System") und unabhängig davon, ob das Modul im Moment auch tatsächlich
+erreichbar ist – siehe ProjectManager-README, Abschnitt "Modul-Verfügbarkeit", für die
+Live-Health-Prüfung per Circuit Breaker.
+
 ## ⚠️ Sicherheitshinweis
 
 Die `-prod.properties`-Dateien enthalten aktuell **Klartext-Zugangsdaten** (Datenbank-
