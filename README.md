@@ -39,6 +39,28 @@ gelten, z. B. der Name des Notification-Exchange) und `application-{profile}.pro
 `dev` und `prod` entsprechen dem über `SPRING_PROFILES_ACTIVE` aktivierten Profil des
 jeweiligen Dienstes.
 
+## Modulare Architektur
+
+**ProjectHub** (ProjectManager) ist das Hauptmodul der Office.OS-Landschaft und läuft
+eigenständig. **Message-Service** (E-Mail-Benachrichtigungen) und **ScmGateway**
+(GitHub-Integration) sind optionale Module, die ProjectHub über RabbitMQ bzw. REST
+anspricht, aber nicht zwingend benötigt – siehe das ProjectManager-README, Abschnitt
+"Modulare Architektur", für die Details zum Verhalten bei Deaktivierung.
+
+Gesteuert wird das über zwei Properties in `project-manager-dev.properties` und
+`project-manager-prod.properties`:
+
+| Property | Modul | Zustand in `dev`/`prod` |
+|---|---|---|
+| `app.modules.message-service.enabled` | Message-Service | `true` (aktiviert) |
+| `app.modules.scm-gateway.enabled` | ScmGateway | `true` (aktiviert) |
+
+Beide sind hier bewusst in **beiden** Profilen auf `true` gesetzt, da Message-Service
+und ScmGateway in der Office.OS-Landschaft aktuell überall mitbetrieben werden. Wird ein
+Modul in einer Umgebung nicht deployt, kann es hier durch Setzen auf `false`
+abgeschaltet werden, ohne ProjectHub selbst anzufassen (Default bei fehlender Property
+ist ebenfalls `true`, siehe `ProjectManager`-Quellcode).
+
 ## ⚠️ Sicherheitshinweis
 
 Die `-prod.properties`-Dateien enthalten aktuell **Klartext-Zugangsdaten** (Datenbank-
