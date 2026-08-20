@@ -46,8 +46,9 @@ jeweiligen Dienstes.
 
 `project-manager-dev.properties` und `project-manager-prod.properties` enthalten je den Key
 `modules.installed` (kommagetrennte Liste von Eureka-Service-Ids) – die für ProjectManager (das
-"Hauptmodul") bewusst freigeschalteten optionalen Module. Aktuell in beiden Profilen aktiviert:
-`scm-gateway` und `message-service`. Das ist eine reine Konfigurationsentscheidung ("gehört das
+"Hauptmodul") bewusst freigeschalteten optionalen Module. Aktuell in `-prod.properties` aktiviert:
+`scm-gateway`, `message-service` und `customer-service` (in `-dev.properties` als Beispiel
+auskommentiert). Das ist eine reine Konfigurationsentscheidung ("gehört das
 Modul grundsätzlich zum System") und unabhängig davon, ob das Modul im Moment auch tatsächlich
 erreichbar ist – siehe ProjectManager-README, Abschnitt "Modul-Verfügbarkeit", für die
 Live-Health-Prüfung per Circuit Breaker.
