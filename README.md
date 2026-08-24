@@ -15,12 +15,14 @@ flowchart LR
     SCM["ScmGateway"]
     MS["Message-Service"]
     CustS["CustomerService"]
+    FSS["FileStorageService"]
 
     Repo -->|git pull, Branch main| CS
     CS -->|"GET /project-manager/{profile}"| PM
     CS -->|"GET /scm-gateway/{profile}"| SCM
     CS -->|"GET /message-service/{profile}"| MS
     CS -->|"GET /customer-service/{profile}"| CustS
+    CS -->|"GET /file-storage-service/{profile}"| FSS
 ```
 
 ## Namenskonvention
@@ -38,6 +40,7 @@ gelten, z. B. der Name des Notification-Exchange) und `application-{profile}.pro
 | `scm-gateway-dev.properties` / `-prod.properties` | Nur ScmGateway |
 | `message-service-dev.properties` / `-prod.properties` | Nur Message-Service |
 | `customer-service-dev.properties` / `-prod.properties` | Nur CustomerService |
+| `file-storage-service-dev.properties` / `-prod.properties` | Nur FileStorageService |
 
 `dev` und `prod` entsprechen dem über `SPRING_PROFILES_ACTIVE` aktivierten Profil des
 jeweiligen Dienstes.
