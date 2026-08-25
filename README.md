@@ -16,6 +16,7 @@ flowchart LR
     MS["Message-Service"]
     CustS["CustomerService"]
     FSS["FileStorageService"]
+    BH["BillingHub"]
 
     Repo -->|git pull, Branch main| CS
     CS -->|"GET /project-manager/{profile}"| PM
@@ -23,6 +24,7 @@ flowchart LR
     CS -->|"GET /message-service/{profile}"| MS
     CS -->|"GET /customer-service/{profile}"| CustS
     CS -->|"GET /file-storage-service/{profile}"| FSS
+    CS -->|"GET /billing-hub/{profile}"| BH
 ```
 
 ## Namenskonvention
@@ -41,6 +43,7 @@ gelten, z. B. der Name des Notification-Exchange) und `application-{profile}.pro
 | `message-service-dev.properties` / `-prod.properties` | Nur Message-Service |
 | `customer-service-dev.properties` / `-prod.properties` | Nur CustomerService |
 | `file-storage-service-dev.properties` / `-prod.properties` | Nur FileStorageService |
+| `billing-hub-dev.properties` / `-prod.properties` | Nur BillingHub |
 
 `dev` und `prod` entsprechen dem über `SPRING_PROFILES_ACTIVE` aktivierten Profil des
 jeweiligen Dienstes.
@@ -50,7 +53,7 @@ jeweiligen Dienstes.
 `project-manager-dev.properties` und `project-manager-prod.properties` enthalten je den Key
 `modules.installed` (kommagetrennte Liste von Eureka-Service-Ids) – die für ProjectManager (das
 "Hauptmodul") bewusst freigeschalteten optionalen Module. Aktuell in beiden Profilen aktiviert:
-`scm-gateway`, `message-service`, `customer-service` und `file-storage-service`. Das ist eine reine
+`scm-gateway`, `message-service`, `customer-service`, `file-storage-service` und `billing-hub`. Das ist eine reine
 Konfigurationsentscheidung ("gehört das Modul grundsätzlich zum System") und unabhängig davon, ob
 das Modul im Moment auch tatsächlich erreichbar ist – siehe ProjectManager-README, Abschnitt
 "Modul-Verfügbarkeit", für die Live-Health-Prüfung per Circuit Breaker.
