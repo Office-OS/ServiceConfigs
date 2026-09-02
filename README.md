@@ -92,3 +92,8 @@ Webhook-Secrets, SMTP-Zugangsdaten) zeitnah rotieren.
 Dieses Repository ist Teil des Office.OS-Monorepo-Setups über Git-Submodule. Für die
 lokale Entwicklungsumgebung siehe das
 **[Develop](https://github.com/Office-OS/Develop)**-Repository.
+
+---
+
+**Office.OS-Gesamtübersicht:** Was Office.OS ist, welche Services es umfasst und wie sie
+zusammenspielen, siehe [Org-Profil](https://github.com/Office-OS/.github-private/blob/main/profile/README.md).
